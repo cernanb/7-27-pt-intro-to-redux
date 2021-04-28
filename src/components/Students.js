@@ -1,18 +1,12 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
-export default class Students extends Component {
-  state = {
-    students: [
-      { id: 1, name: "Cernan", city: "San Diego" },
-      { id: 2, name: "Daisy", city: "La Jolla" },
-      { id: 3, name: "Ashley", city: "Clairemont" },
-    ],
-  };
+class Students extends Component {
   render() {
     return (
       <div>
         <div>
-          {this.state.students.map((student) => (
+          {this.props.students.map((student) => (
             <div key={student.id}>
               {student.name} - {student.city}
             </div>
@@ -22,3 +16,14 @@ export default class Students extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  const laJollaStudents = state.students.filter(
+    (student) => student.city === "La Jolla"
+  );
+  return {
+    students: laJollaStudents,
+  };
+};
+
+export default connect(mapStateToProps)(Students);

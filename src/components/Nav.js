@@ -1,6 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
 
-export default function Nav() {
+function Nav({ studentNum, subjectNum }) {
   return (
     <div>
       <ul>
@@ -8,7 +9,10 @@ export default function Nav() {
           <p>Home</p>
         </li>
         <li>
-          <p>Students</p>
+          <p>Students - ({studentNum})</p>
+        </li>
+        <li>
+          <p>Subjects - ({subjectNum})</p>
         </li>
         <li>
           <p>New Student</p>
@@ -17,3 +21,12 @@ export default function Nav() {
     </div>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    studentNum: state.students.length,
+    subjectNum: state.subjects.length,
+  };
+};
+
+export default connect(mapStateToProps)(Nav);
