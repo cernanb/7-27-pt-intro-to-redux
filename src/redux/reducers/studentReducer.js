@@ -9,6 +9,14 @@ function studentReducer(
   action
 ) {
   switch (action.type) {
+    case "ADD_STUDENT":
+      const formattedStudent = {
+        id: state.length + 1,
+        name: action.payload.newName,
+        city: action.payload.newCity,
+      };
+      // return [...state, formattedStudent];
+      return state.concat(formattedStudent);
     default:
       return state;
   }

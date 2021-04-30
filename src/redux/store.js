@@ -1,10 +1,12 @@
 import { createStore, combineReducers } from "redux";
-import students from "./studentReducer";
-import subjects from "./subjectReducer";
+import students from "./reducers/studentReducer";
+import subjects from "./reducers/subjectReducer";
+import darkMode from "./reducers/darkModeReducer";
 
 const rootReducer = combineReducers({
   subjects,
   students,
+  darkMode,
 });
 
 export default createStore(

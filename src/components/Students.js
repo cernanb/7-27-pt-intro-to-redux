@@ -18,11 +18,8 @@ class Students extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const laJollaStudents = state.students.filter(
-    (student) => student.city === "La Jolla"
-  );
   return {
-    students: laJollaStudents,
+    students: state.students,
   };
 };
 
